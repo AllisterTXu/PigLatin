@@ -4,7 +4,8 @@ public void setup()
 	System.out.println("there are " + lines.length + " lines");
 	for (int i = 0 ; i < lines.length; i++) 
 	{
-	  System.out.println(pigLatin(lines[i]));
+	  System.out.print(pigLatin(lines[i]));
+    System.out.println(" " + findFirstVowel(lines[i]));
 	}
 }
 public void draw()
@@ -13,8 +14,9 @@ public void draw()
 }
 
 public boolean isVowel(String sChar){
-  if(sChar == "a" || sChar == "e" || sChar == "i" || sChar == "o" || sChar == "u")
-  return true;
+ if(sChar.equals("a") || sChar.equals("e") || sChar.equals("i") || sChar.equals("o") || sChar.equals("u")){
+    return true;
+  }
   else {
     return false;
   }
@@ -33,20 +35,17 @@ public int findFirstVowel(String sWord)
 //precondition: sWord is a valid String of length greater than 0.
 //postcondition: returns the position of the first vowel in sWord.  If there are no vowels, returns -1
 {
-  
-  //Is the first character a vowel?
-  if(isVowel(sWord.substring(0,1))){
-    return 0;
+  if(hasVowels(sWord)){
+    if(isVowel(sWord.substring(0,1))){
+      return 0;
+    }
+  	else if(sWord.substring(0,2).equals("qu") || sWord.substring(0,2).equals("st")){
+      return 1;
+    }
+    else if(sWord.substring(0,3).equals("thr")){
+      return 2;
+    }
   }
-  //Are the first two characters "qu" or "st"?
-	if(sWord.substring(0,2).equals("qu") || sWord.substring(0,2).equals("st")){
-    return 1;
-  }
-  //Are the first three characters "thr"?
-  if(sWord.substring(0,3).equals("thr")){
-    return 2;
-  }
-  
   return -1;
 }
 
