@@ -7,6 +7,9 @@ public void setup()
 	  System.out.print(pigLatin(lines[i]));
     System.out.println(" " + findFirstVowel(lines[i]));
 	}
+  //if(hasVowels("beast")){
+  //  System.out.println("beast has vowels");
+  //}
 }
 public void draw()
 {
@@ -23,7 +26,7 @@ public boolean isVowel(String sChar){
 }
 
 public boolean hasVowels(String sWord){
-  for(int i = 0; i < sWord.length()-1; i++){
+  for(int i = 0; i < sWord.length(); i++){
     if(isVowel(sWord.substring(i,i+1))){
       return true;
     }
@@ -45,8 +48,11 @@ public int findFirstVowel(String sWord)
     else if(sWord.substring(0,3).equals("thr")){
       return 2;
     }
+    else {
+      return -1;
+    }
   }
-  return -1;
+  return 3;
 }
 
 
